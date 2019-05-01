@@ -1,0 +1,121 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main (){
+    char s1[50],s2[50],sc[50],sc1[50];
+    int n,i,y=0;
+    char c,c1,c2;
+    inicio:
+    printf("\nDigite um numero para:");
+    printf("\n1-Ler uma string S1:");
+    printf("\n2-Imprimir o tamanho da string S1");
+    printf("\n3-Comparar a string S1 com uma nova string S2:");
+    printf("\n4-Concatenar a string S1 com uma nova string S2: ");
+    printf("\n5-Imprimir a string S1 de forma reversa:");
+    printf("\n6-Contar quantas vezes um dado caractere aparece na string S1:");
+    printf("\n7-Substituir a primeira ocorrencia do caractere C1 da string S1 pelo caractere C2:   ");
+    printf("\n8-Verificar se uma string S2 e substring de S1:   ");
+    printf("\n9-Retornar uma substring da string S1:");
+    printf("\n");
+    scanf("%d", &n);
+
+    switch (n){
+        case 1:
+        system("cls");
+        printf("\n1- Ler uma string S1:");
+        fflush(stdin);
+        gets(s1);
+        system("pause");
+        goto inicio;
+
+        case 2:
+        system("cls");
+        printf("\n2-Imprimir o tamanho da string S1");
+        printf("\nO tamanho da string e:%d",strlen(s1));
+        system("pause");
+        goto inicio;
+
+        case 3:
+        system("cls");
+        printf("\n3-Comparar a string S1 com uma nova string S2   ");
+        printf("\nDigite a string s2:");
+        fflush(stdin);
+        gets(s2);
+        if (strcmp(s1,s2)==0){
+            printf("\nSao iguais:");
+            printf("\n");
+        } else {
+            printf("\nsao diferentes:");
+            printf("\n");
+        }
+        system("pause");
+        goto inicio;
+
+        case 4:
+        system("cls");
+        strcpy(sc1,s1);
+        printf("\n4-Concatenar a string S1 com uma nova string S2:");
+        printf("\nDigite a string s2:");
+        fflush(stdin);
+        gets(s2);
+        printf("\nA string concatenada e %s:", strcat(sc1,s2));
+        printf("\n");
+        system("pause");
+        goto inicio;
+
+        case 5:
+        system("cls");
+        printf("\n5-Imprimir a string S1 de forma reversa:");
+        printf("\n");
+        for (i=strlen(s1)-1; i>=0; i--){
+            printf("%c",s1[i]);
+        }
+        printf("\n");
+        system("pause");
+        goto inicio;
+
+        case 6:
+        system("cls");
+        printf("\n6-Contar quantas vezes um dado caractere aparece na string S1:");
+        printf("\nDigite o caractere:");
+        fflush(stdin);
+        scanf("%c", &c);
+        for (i=0; s1[i]!='\0'; i++){
+            if(s1[i]==c){
+                y++;
+            }
+        }
+        printf("\nA quantidade de %c que aparece na string e %d:", c,y);
+        printf("\n");
+        system("pause");
+        goto inicio;
+        
+        case 7:
+        system("cls");
+        strcpy(sc,s1);
+        printf("\n7-Substituir a primeira ocorrencia do caractere C1 da string S1 pelo caractere C2:");
+        printf("\nDigite o caractere que sera substituido:");
+        fflush(stdin);
+        scanf("%c",&c1);
+        printf("\nDigite o caractere para substituir:");
+        fflush(stdin);
+        scanf("%c",&c2);
+
+        for (i=0; sc[i]!='\0'; i++){
+            if(sc[i]==c1){
+            sc[i]=c2;
+            printf("\n");
+            break;
+        }
+        }
+        printf("\n%s",sc);
+        printf("\n");
+        system("pause");
+        goto inicio;
+        default:
+        
+        return 0;
+
+
+    }
