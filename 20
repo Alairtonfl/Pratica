@@ -3,8 +3,8 @@
 #include <string.h>
 
 int main (){
-    char s1[50],s2[50],sc[50],sc1[50];
-    int n,i,y=0;
+    char s1[50],s2[50],sc[50],sc1[50],sub[50];
+    int n,j,s=0,t,in,i,y=0;
     char c,c1,c2;
     inicio:
     printf("\nDigite um numero para:");
@@ -90,7 +90,7 @@ int main (){
         printf("\n");
         system("pause");
         goto inicio;
-        
+
         case 7:
         system("cls");
         strcpy(sc,s1);
@@ -113,9 +113,55 @@ int main (){
         printf("\n");
         system("pause");
         goto inicio;
+
+        case 8:
+        system("cls");
+        printf("\n8-Verificar se uma string S2 e substring de S1:");
+        printf("\nDigite a string s2:");
+        fflush(stdin);
+        gets(s2);
+        if(strlen(s1)<strlen(s2)){
+            printf("\nNao eh substring");
+        } else{
+            for(i=0; i<strlen(s1); i++){
+                if (s1[i]==s2[0]){
+                    for (j=0; j<strlen(s2)-1; j++){
+                        if(s2[j]==s1[i++]){
+                            s++;
+                        }
+
+                    }
+                }
+                if(s==strlen(s2)){
+                    break;
+                }
+            }
+        }
+        if(s==strlen(s2)){
+            printf("\nEla e uma substring:");
+        } else {
+            printf("\nNao e uma substring:");
+        }
+        goto inicio;
+
+        case 9:
+        system("cls");
+        printf("\nDigite o inicio e o tamanho da substring s1:");
+        scanf("%d %d", &in, &t);
+
+        for(i=0;i<t; i++){
+            sub[i]=s1[in+i-1];
+        }
+        sub[i]='\0';
+        printf("\nA substring e %s",sub);
+        system("pause");
+        return 0;
+
         default:
-        
+
         return 0;
 
 
     }
+    return 0;
+}
