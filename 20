@@ -123,7 +123,7 @@ int main (){
         gets(s2);
         if(strlen(s1)>strlen(s2)){
 
-            for(i=0; i<strlen(s1); i++){
+            for(i=0; i<=strlen(s1); i++){
                 if (s1[i]==s2[0]){
                     for (j=0; j<strlen(s2)-1; j++){
                         if(s2[j]==s1[i++]){
@@ -139,7 +139,7 @@ int main (){
         }
         if(s==strlen(s2)){
             printf("\nEla e uma substring:");
-        } else {
+        } if(s!=strlen(s2)) {
             printf("\nNao e uma substring:");
         }
         printf("\n");
@@ -167,3 +167,4 @@ int main (){
     }
     return 0;
 }
+
