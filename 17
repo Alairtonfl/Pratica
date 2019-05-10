@@ -1,0 +1,122 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#define t 2
+
+struct Agenda{
+        char nome[30];
+        char email[50];
+        int tel;
+        int dia;
+        int mes;
+        int ano;
+        char obs[100];
+};
+typedef struct Agenda agenda;
+
+
+int main (){
+    int i,n,m,d;
+    char name[30];
+    agenda A[t];
+    printf("************AGENDA************");
+   for(i=0; i<t; i++){
+        printf("\nDigite o nome:");
+        fflush(stdin);
+        gets(A[i].nome);
+        printf("\nDigite o numero do telefone:");
+        scanf("%d", &A[i].tel);
+        printf("\nDigite o email:");
+        fflush(stdin);
+        gets(A[i].email);
+        printf("\nDigite a data de nascimento:");
+        scanf("%d %d %d",&A[i].dia,&A[i].mes,&A[i].ano);
+        printf("\nAlguma obs sobre vc:");
+        fflush(stdin);
+        gets(A[i].obs);
+        printf("\n");
+        }
+
+        inicio:
+        printf("\nDigite 1 para buscar por nome:");
+        printf("\nDigite 2 para buscar por mes de aniversario:");
+        printf("\nDigite 3 para buscar por dia e mes de aniversario:");
+        printf("\n");
+        scanf("%d", &n);
+
+        switch(n){
+            case 1:
+            system("cls");
+            printf("\nDigite o nome que vc deseja procurar:");
+            fflush(stdin);
+            gets(name);
+            for(i=0; i<t; i++){
+                if(strcasecmp(name,A[i].nome)==0){
+                    printf("\nNome:%s", A[i].nome);
+                    printf("\nEmail:%s",A[i].email);
+                    printf("\nTelefone:%d",A[i].tel);
+                    printf("\nNascimento:%d/%d/%d",A[i].dia,A[i].mes,A[i].ano);
+                    printf("\n");
+                    printf("\nOBS sobre:%s", A[i].obs);
+                    printf("\n");
+
+                }
+
+            }
+            system("pause");
+            goto inicio;
+
+            case 2:
+                system("cls");
+                printf("\nDigite o mes a ser procurado:");
+                scanf("%d", &m);
+                for(i=0; i<t; i++){
+                if(A[i].mes==m){
+                    printf("\nNome:%s", A[i].nome);
+                    printf("\nEmail:%s",A[i].email);
+                    printf("\nTelefone:%d",A[i].tel);
+                    printf("\nNascimento:%d/%d/%d",A[i].dia,A[i].mes,A[i].ano);
+                    printf("\n");
+                    printf("\nOBS sobre:%s", A[i].obs);
+                    printf("\n");
+
+
+                }
+
+            }
+            system("pause");
+            goto inicio;
+
+            case 3:
+                system("cls");
+                printf("\nDigite o dia e o mes ser procurado:");
+                scanf("%d %d",&d, &m);
+                for(i=0; i<t; i++){
+                if(A[i].mes==m && A[i].dia==d){
+                    printf("\nNome:%s", A[i].nome);
+                    printf("\nEmail:%s",A[i].email);
+                    printf("\nTelefone:%d",A[i].tel);
+                    printf("\nNascimento:%d/%d/%d",A[i].dia,A[i].mes,A[i].ano);
+                    printf("\n");
+                    printf("\nOBS sobre:%s", A[i].obs);
+                    printf("\n");
+
+
+                }
+
+            }
+            system("pause");
+            goto inicio;
+            default:
+                return 0;
+
+
+        }
+
+
+
+
+
+
+return 0;
+}
