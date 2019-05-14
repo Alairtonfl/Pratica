@@ -12,7 +12,7 @@ int main (){
     int uniao;
     srand(time(NULL));
 
-    printf("\nDigite o tamanho do conjunto A que vc deseja criar:");
+    printf("\nDigite o tamanho do conjunto A que vc deseja criar (maximo 100):");
     scanf("%d", &t);
     for (i=0; i<t; i++){
         A[i]=(rand()%100)-50;
@@ -22,13 +22,19 @@ int main (){
         printf(" |%d|", A[i]);
     }
 
-    printf("\nDigite o tamanho do conjunto B que vc deseja criar:");
+    printf("\nDigite o tamanho do conjunto B que vc deseja criar (maximo 100):");
     scanf("%d", &t2);
     for (i=0;i<t2;i++){
         printf("\nDigite o elemento %d do conjunto B.", i+1);
         scanf("%d", &B[i]);
-        
-    }
+        if(B[i]<-50||B[i]>50){
+        do{
+        printf("\nDigite o elemento %d do conjunto B.", i+1);
+        scanf("%d", &B[i]);
+        } while(B[i]<-50||B[i]>50);
+        }}
+
+
     printf("\nO conjunto B e formado por esses elementos:");
     for(i=0; i<t2; i++){
         printf(" |%d|", B[i]);
