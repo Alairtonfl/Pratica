@@ -1,0 +1,348 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <time.h>
+
+
+
+int main (){
+    int n,x,i,j,t,t2,igualdade=0,flag=0,flagb=0;
+    int maiorA=0,maiorB=0,menorA=1000,menorB=1000,igual=0;
+    int subcon=0, cond=0,k=0;
+    int A[100],Ac[100], Ab[100],B[100],AuB[200],AiB[100],AdB[100],BdA[100];
+    int uniao;
+    srand(time(NULL));
+
+    printf("\nDigite o tamanho do conjunto A que vc deseja criar:");
+    scanf("%d", &t);
+    for (i=0; i<t; i++){
+        A[i]=(rand()%100)-50;
+        }
+    printf("\nO conjunto A e formado por esses elementos:");
+    for(i=0; i<t; i++){
+        printf(" |%d|", A[i]);
+    }
+
+    printf("\nDigite o tamanho do conjunto B que vc deseja criar:");
+    scanf("%d", &t2);
+    for (i=0;i<t2;i++){
+        printf("\nDigite o elemento %d do conjunto B.", i+1);
+        scanf("%d", &B[i]);
+        
+    }
+    printf("\nO conjunto B e formado por esses elementos:");
+    for(i=0; i<t2; i++){
+        printf(" |%d|", B[i]);
+    }
+    printf("\n");
+    system("pause");
+
+    inicio:
+    printf("********************MENU********************");
+    printf("\n1 - Verificar pertinencia de um elemento.");
+    printf("\n2 - Exibir elementos de maior e menor valor de A e B.");
+    printf("\n3 - Verificar igualdade dos conjuntos.");
+    printf("\n4 - Verificar se A e subconjunto de B ou se B e subconjunto de A.");
+    printf("\n5 - Gerar o conjunto de Uniao de A e B.");
+    printf("\n6 - Gerar o conjunto de Interseção entre A e B.");
+    printf("\n7 - Gerar os conjuntos de Diferenca A−B e B−A.");
+    printf("\n8 - Gerar os conjuntos de Complemento de A e Complemento de B.");
+    printf("\n9 - Sair.");
+    printf("\n");
+    printf("********************************************");
+    printf("\n");
+    scanf("%d", &x);
+
+    switch (x){
+        case 1:
+        system("cls");
+        printf("\n1 - Verificar pertinencia de um elemento.");
+        printf("\nDigite o numero;");
+        scanf("%d", &n);
+        for(i=0; i<t; i++){
+            if (n==A[i]){
+            printf("\nO numero %d pertence ao conjunto A:", n);
+            flag++;
+            }
+        } if(flag==0){
+            printf("\nO numero %d nao pertence ao conjunto A:", n);
+        }
+         for(i=0; i<t2; i++){
+            if (n==B[i]){
+            printf("\nO numero %d pertence ao conjunto B:", n);
+            flagb++;
+            }
+        } if(flagb==0){
+            printf("\nO numero %d nao pertence ao conjunto B:", n);
+        }
+        flag=0;
+        flagb=0;
+        printf("\n");
+        system("pause");
+        goto inicio;
+
+        case 2:
+        system("cls");
+        printf("\n2 - Exibir elementos de maior e menor valor de A e B.");
+        for (i=0; i<t; i++){
+            if(A[i]>maiorA){
+                maiorA=A[i];
+            }}
+        for (i=0; i<t; i++){
+            if(A[i]<menorA){
+                menorA=A[i];
+            }}
+        for (i=0; i<t2; i++){
+            if(B[i]>maiorB){
+                maiorB=B[i];
+            }}
+        for (i=0; i<t2; i++){
+            if(B[i]<menorB){
+                menorB=B[i];
+            }}
+
+        printf("\n");
+        printf("\nO maior valor do conjunto A eh: |%d|",maiorA);
+        printf("\nO menor valor do conjunto A eh: |%d|", menorA);
+        printf("\n");
+        printf("\nO maior valor do conjunto B eh: |%d|",maiorB);
+        printf("\nO menor valor do conjunto B eh: |%d|", menorB);
+        printf("\n");
+        system("pause");
+        goto inicio;
+
+        case 3:
+        system("cls");
+        printf("\n3 - Verificar igualdade dos conjuntos.");
+        for(i=0; i<t; i++){
+            for(j=0; j<t2; j++){
+                if(A[i]==B[j]){
+                    igual++;
+                }
+            }
+        }
+        if(igual==t){
+            printf("\nOs conjuntos A e B sao iguais:");
+        } else {
+            printf("\nOs conjuntos A e B sao diferentes:");
+        }
+        printf("\n");
+        system("pause");
+        goto inicio;
+
+        case 4:
+        system("cls");
+        printf("\n4 - Verificar se A e subconjunto de B ou se B e subconjunto de A.");
+        printf("\n");
+            if(t>t2){
+                printf("\nO conjunto A nao pode ser subconjunto de B:");
+                cond++;
+            } else {
+                for(i=0; i<t2; i++){
+                    for (j=0; j<t; j++){
+                        if(B[i]==A[j]){
+                            subcon++;
+
+                        }
+                    }
+                }
+            } if(subcon==t){
+                printf("A e subconjunto de B:");
+            } if(subcon!=t && cond==0){
+                printf("\nA nao e subconjunto de B:");
+            }
+            printf("\n");
+            cond=0;
+            subcon=0;
+            if(t2>t){
+                printf("\nO conjunto B nao pode ser subconjunto de A:");
+                cond++;
+            } else {
+                for(i=0; i<t; i++){
+                    for (j=0; j<t2; j++){
+                        if(A[i]==B[j]){
+                            subcon++;
+
+                        }
+                    }
+                }
+            } if(subcon==t2){
+                printf("\nB e subconjunto de A:");
+            } if(subcon!=t && cond==0){
+                printf("\nB nao e subconjunto de A:");
+            }
+            cond=0;
+            subcon=0;
+            printf("\n");
+            system("pause");
+            goto inicio;
+
+            case 5:
+            system("cls");
+            printf("\n5 - Gerar o conjunto de Uniao de A e B.");
+
+                for (i=0; i<t; i++){
+                AuB[i]=A[i];}
+                k=t;
+
+                for (i=0; i<t2; i++){
+                igualdade=0;
+
+                for (j=0; j<t; j++) {
+                if (B[i] == A[j]){
+                igualdade++;
+                ;}}
+
+                if (igualdade==0){
+                    AuB[k]=B[i];
+                    k++;
+
+                    }
+                }
+
+                printf("\nA uniao do conjunto A e B e:");
+                for (i=0; i<k; i++){
+                printf(" |%d|",AuB[i]);
+                }
+                k=0;
+                printf("\n");
+                system("pause");
+                goto inicio;
+
+            case 6:
+                system("cls");
+                printf("\n6 - Gerar o conjunto de Intersecao entre A e B.");
+                for(i=0; i<t; i++){
+                    for(j=0; j<t2; j++){
+                        if (A[i]==B[j]){
+                            AiB[k]=A[i];
+                            k++;
+                        }
+                    }
+                }
+
+            if(k!=0){
+            printf("\nO conjunto intersecao entre A e B e:");
+            for(i=0; i<k; i++){
+                printf(" |%d|", AiB[i]);
+            } } else {
+            printf("\nO conjunto intersecao nao existe:");
+            }
+            printf("\n");
+            k=0;
+            system("pause");
+            goto inicio;
+
+            case 7:
+            system("cls");
+            printf("\n7 - Gerar os conjuntos de Diferenca A-B e B-A.");
+            printf("\nA diferenca de A-B:");
+            flag=0;
+                for(i=0; i<t; i++){
+                    igualdade=0;
+                    for(j=0; j<t2; j++){
+                        if (A[i]==B[j]){
+                            igualdade++;
+                            }
+
+                    }
+                    if(igualdade==0){
+                            AdB[k++]=A[i];
+                            flag++;
+                        }
+                }
+
+                if(flag!=0){
+                    for(i=0; i<k; i++){
+                    printf(" |%d|", AdB[i]);
+                }} else{
+                    printf("\nOs conjuntos nao possuem diferenca:");
+                }
+                k=0;
+                flag=0;
+                printf("\n");
+
+                printf("\nA diferenca de B-A:");
+                for(i=0; i<t2; i++){
+                    igualdade=0;
+                    for(j=0; j<t; j++){
+                        if (B[i]==A[j]){
+                            igualdade++;
+                            }
+
+                    }
+                    if(igualdade==0){
+                            BdA[k++]=B[i];
+                            flag++;
+                        }
+                }
+
+                if(flag!=0){
+                    for(i=0; i<k; i++){
+                    printf(" |%d|", BdA[i]);
+                }} else{
+                    printf("\nOs conjuntos nao possuem diferenca:");
+                }
+                k=0;
+                flag=0;
+                printf("\n");
+                system("pause");
+                goto inicio;
+
+            case 8:
+                system("cls");
+                printf("\n8 - Gerar os conjuntos de Complemento de A e Complemento de B.");
+
+                for(i=-50; i<50; i++){
+                    flag=0;
+                    for(j=0; j<t; j++){
+                        if(A[j]==i){
+                           flag=1;
+                        }
+                    } if(flag==0){
+                            Ac[k]=i;
+                            k++;
+                    }
+                }
+                printf("\nO conjunto complemento de A e:");
+                 printf("\n");
+                for(i=0; i<k; i++){
+                    printf(" |%d|", Ac[i]);
+                }
+                printf("\n");
+                k=0;
+                flag=0;
+
+                for(i=-50; i<50; i++){
+                    flag=0;
+                    for(j=0; j<t2; j++){
+                        if(B[j]==i){
+                           flag=1;
+                        }
+                    } if(flag==0){
+                            Ab[k]=i;
+                            k++;
+                    }
+                }
+                printf("\nO conjunto complemento de B e:");
+                printf("\n");
+                for(i=0; i<k; i++){
+                    printf(" |%d|", Ab[i]);
+                }
+                 printf("\n");
+                 system("pause");
+                 goto inicio;
+
+            case 9:
+                system("cls");
+                printf("\nPrograma finalizado...");
+                printf("\n");
+                return 0;
+
+
+
+
+    }
+
+
+    return 0;
+    }
