@@ -14,8 +14,24 @@ int main (){
 
     printf("\nDigite o tamanho do conjunto A que vc deseja criar (maximo 100):");
     scanf("%d", &t);
+    if(t<1||t>100){
+        do{
+            printf("\nNumero invalido. Digite outro...");
+            scanf("%d", &t);
+        } while(t<1||t>100);
+    }
     for (i=0; i<t; i++){
-        A[i]=(rand()%100)-50;
+        do{
+            A[i]=(rand()%100)-50;
+            k=0;
+            for(j=0; j<i; j++){
+                if(A[i]==A[j]){
+                    k=1;
+                    break;
+                }
+            }
+        } while(k);
+
         }
     printf("\nO conjunto A e formado por esses elementos:");
     for(i=0; i<t; i++){
@@ -24,6 +40,11 @@ int main (){
 
     printf("\nDigite o tamanho do conjunto B que vc deseja criar (maximo 100):");
     scanf("%d", &t2);
+        if(t2<1||t2>100){
+        do{
+            printf("\nNumero invalido. Digite outro...");
+            scanf("%d", &t2);
+        } while(t2<1||t2>100);}
     for (i=0;i<t2;i++){
         printf("\nDigite o elemento %d do conjunto B.", i+1);
         scanf("%d", &B[i]);
@@ -173,7 +194,7 @@ int main (){
                 }
             } if(subcon==t2){
                 printf("\nB e subconjunto de A:");
-            } if(subcon!=t && cond==0){
+            } if(subcon!=t2 && cond==0){
                 printf("\nB nao e subconjunto de A:");
             }
             cond=0;
@@ -309,10 +330,13 @@ int main (){
                             k++;
                     }
                 }
+                if(k!=0){
                 printf("\nO conjunto complemento de A e:");
-                 printf("\n");
+                printf("\n");
                 for(i=0; i<k; i++){
                     printf(" |%d|", Ac[i]);
+                }}else {
+                    printf("\nO conjunto e igual ao universo.");
                 }
                 printf("\n");
                 k=0;
@@ -329,10 +353,13 @@ int main (){
                             k++;
                     }
                 }
+                if(k!=0){
                 printf("\nO conjunto complemento de B e:");
                 printf("\n");
                 for(i=0; i<k; i++){
                     printf(" |%d|", Ab[i]);
+                }}else {
+                    printf("\nO conjunto e igual ao universo.");
                 }
                  printf("\n");
                  system("pause");
