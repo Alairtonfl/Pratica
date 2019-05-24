@@ -1,0 +1,97 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+
+struct Hab{
+    char sexo[10];
+    char corO;
+    char corC;
+    int idade;
+};
+typedef struct Hab hab;
+hab H[2];
+
+
+
+void ler(){
+    int i;
+    for (i=0; i<5; i++){
+        printf("\nDigite o sexo:");
+        scanf("%s", &H[i].sexo);
+        fflush(stdin);
+        printf("\nDigite a cor dos olhos. 'A' para azuis e 'C' para castanhos:");
+        scanf("%c", &H[i].corO);
+        fflush(stdin);
+        printf("\nDigite a cor do cabelo. 'L' para loiro, 'P' para preto e 'C' para castanhos:");
+        scanf("%c", &H[i].corC);
+        fflush(stdin);
+        printf("\nDigite a idade:");
+        scanf("%d", &H[i].idade);
+        fflush(stdin);
+    }
+
+}
+
+float media(){
+    int flag=0;
+    float r=0.0;
+    for(int i=0; i<5; i++){
+        if(H[i].corO=='C' && H[i].corC=='P'){
+            r=r+H[i].idade;
+            flag++;
+        }
+    }
+    if(flag>0){
+    return r/flag;
+    }
+}
+
+int MaiorI(){
+    int maior=0;
+    for(int i=0; i<5; i++){
+        if(H[i].idade>maior){
+            maior=H[i].idade;
+        }
+    }
+    return maior;
+}
+
+int num(){
+    int q=0;
+    for(int i=0; i<5; i++){
+        if(strcmp(H[i].sexo,"feminino")==0 && H[i].idade<35 && H[i].idade>18 && H[i].corC=='L' && H[i].corO=='A'){
+            q++;
+        }
+    }
+    return q;
+
+}
+
+
+int main(){
+
+
+ler();
+if(media()>0){
+    printf("A media e %f", media());
+}else{
+    printf("Nao existe habitante com o olho castanho e cabelo preto.");
+}
+
+printf("\nA maior idade e %d", MaiorI());
+if(num()>0){
+    printf("\nO numero de mulheres entre 18 e 35 anos que tenham olhos azuis e cabelos loiros e %d",num());
+}else{
+    printf("Nao existe habitante mulher que tenha o olho azul, cabelo loiro e tenha idade entre 18 e 35 anos.");
+}
+
+
+
+
+
+
+
+
+return 0;
+}
