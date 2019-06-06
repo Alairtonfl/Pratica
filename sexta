@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include <stdlib.h>
+int soma(int *c, int *c1, int *c2, int n, int n1){
+    if (n==n1){
+        for (int i=0; i<n; i++){
+            *(c2+i)=*(c+i)+*(c1+i);
+        }
+         for (int i=0; i<n; i++){
+            printf(" %d", *(c2+i));
+        }
+        return 1;
+    } else {
+        return 0;
+
+    }
+
+
+}
+
+int main (){
+    int *p, *p1, *p2;
+    int n,n1,c;
+
+    printf("\nDigite o tamanho do vetor 1:");
+    scanf("%d", &n);
+    p=(int*)malloc(n*sizeof(int));
+    for (int i=0; i<n; i++){
+        scanf("%d", &*(p+i));
+    }
+
+    printf("\nDigite o tamanho do vetor 2:");
+    scanf("%d", &n1);
+    p1=(int*)malloc(n1*sizeof(int));
+    for (int i=0; i<n1; i++){
+        scanf("%d", &*(p1+i));
+    }
+
+
+    c=soma(p,p1,p1,n,n1);
+    printf("\n%d", c);
+
+
+return 0;
+}
