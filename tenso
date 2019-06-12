@@ -33,10 +33,17 @@ int main(){
 		mat[i] = (int*)malloc(n* sizeof(int));
 		}
 
-    for(int i=0; i<n-1; i++){
-        for(int j=0; j<2; j++){
-            mat[i][j]=sqrt(pow(((p+i+1)->x)-((p+i)->x),2)+pow(((p+i+1)->y)-((p+i)->y),2));;
+    for(int i=0; i<n; i++){
+        for(int j=0; j<n; j++){
+            mat[i][j]=sqrt(pow(((p+i)->x)-((p+j)->x),2)+pow(((p+i)->y)-((p+j)->y),2));
         }
+	}
+
+	for(int i=0; i<n; i++){
+        for(int j=0; j<n; j++){
+            printf("  %.2f", mat[i][j]);
+        }
+        printf("\n");
 	}
 
 	printf("\nDigite as cordenadas x y da cidade A;");
@@ -48,6 +55,7 @@ int main(){
         if(a==(p+i)->x && b==(p+i)->y){
             for(int j=0; j<n; j++){
                 if(a1==(p+j)->x && b1==(p+j)->y){
+                        printf("%f", mat[i][j]);
 
                 }
             }
