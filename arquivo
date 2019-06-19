@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+
+int main (){
+    int k;
+    int m,n;
+    char Vet[40];
+    FILE *file;
+    FILE *fim;
+    fim=fopen("final.txt", "w");
+    file=fopen("notas.txt", "r");
+    if(file==NULL){
+        printf("\nErro");
+        system("pause");
+        exit(1);
+    }
+
+    fscanf(file,"%s",&Vet);
+        printf("%s", Vet);
+
+    fprintf(fim,"Nome:%s", &Vet);
+
+    fscanf(file,"%d", &k);
+    fprintf(fim,"\nNota 1: %d",k);
+    fscanf(file,"%d", &m);
+    fprintf(fim,"\nNota 2: %d",m);
+    fscanf(file,"%d", &n);
+    fprintf(fim,"\nNota 3: %d",n);
+
+    fclose(file);
+    fclose(fim);
+
+
+
+
+
+return 0;
+}
